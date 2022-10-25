@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package short_links;
+option go_package = "short_links/pb";
+
+service URL {
+  rpc ResolveShortLink (ResolveShortLinkRequest) returns (ResolveShortLinkResponse) {}
+  rpc CreateShortLink (CreateShortLinkRequest) returns (CreateShortLinkResponse) {}
+}
+
+message ResolveShortLinkRequest {
+  string path = 1;
+}
+
+message ResolveShortLinkResponse {
+  string url = 1;
+}
+
+message CreateShortLinkRequest {
+  string url = 1;
+}
+
+message CreateShortLinkResponse {
+  string path = 1;
+  string url = 2;
+}
